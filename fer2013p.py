@@ -24,7 +24,7 @@ if not os.path.isdir(checkpoint_path):
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--data', type=str, default='/raid/name/lixiao/datasets/fer2013_plus')
+    parser.add_argument('--data', type=str, default='/kaggle/input/ferplus')
     parser.add_argument('--checkpoint_path', type=str, default=checkpoint_path + time_str + 'model.pth')
     parser.add_argument('--best_checkpoint_path', type=str, default=checkpoint_path +time_str +'model_best.pth')
     parser.add_argument('-j', '--workers', default=4, type=int, metavar='N', help='number of data loading workers')
@@ -38,7 +38,7 @@ def parse_args():
     parser.add_argument('--resume', default='./checkpoint/', type=str, metavar='PATH', help='path to checkpoint')
     parser.add_argument('-e', '--evaluate', default=False, action='store_true', help='evaluate model on test set')
     parser.add_argument('--beta', type=float, default=0.9)
-    parser.add_argument('--gpu', type=str, default='4')
+    parser.add_argument('--gpu', type=str, default='0')
     return parser.parse_args()
 
 def main():
@@ -77,8 +77,8 @@ def main():
     cudnn.benchmark = True
 
     # 2/Data loading code
-    traindir = os.path.join(args.data, 'Training')
-    valdir = os.path.join(args.data, 'PublicTest')
+    traindir = os.path.join(args.data, 'train')
+    valdir = os.path.join(args.data, 'test')
 
     train_dataset = datasets.ImageFolder(traindir,
                                          transforms.Compose([transforms.RandomResizedCrop((224, 224)),
