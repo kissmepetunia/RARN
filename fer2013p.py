@@ -48,7 +48,7 @@ def main():
     
     model = RARN()
     model = torch.nn.DataParallel(model).cuda()  # model.to(device)
-    checkpoint = torch.load('/raid/name/lixiao/self_ckpt/checkpoint/Pretrained_on_MSCeleb.pth.tar')
+    checkpoint = torch.load('/kaggle/input/pretrainedon/Pretrained_on_MSCeleb.pth.tar')
     pre_trained_dict = checkpoint['state_dict']
     model.load_state_dict(pre_trained_dict, False)
     model.module.fc_1 = torch.nn.Linear(128, 7).cuda()
