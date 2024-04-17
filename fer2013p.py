@@ -54,7 +54,7 @@ def main():
     del pre_trained_dict['module.fc_1.weight']
     del pre_trained_dict['module.fc_1.bias']
     model.load_state_dict(pre_trained_dict, False)
-    model.module.fc_1 = torch.nn.Linear(128, 7).cuda()
+    model.module.fc_1 = torch.nn.Linear(128, 8).cuda()
     
     # 1/define loss function (criterion) and optimizer
     criterion = nn.CrossEntropyLoss().cuda()
