@@ -51,6 +51,7 @@ def main():
     checkpoint = torch.load('/kaggle/input/pretrainedon/Pretrained_on_MSCeleb.pth.tar')
     
     pre_trained_dict = checkpoint['state_dict']
+    print(pre_trained_dict.keys())
     del prepre_trained_dict['module.fc_1.weight']
     del prepre_trained_dict['module.fc_1.bias']
     model.load_state_dict(pre_trained_dict, False)
