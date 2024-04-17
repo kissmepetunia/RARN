@@ -136,8 +136,8 @@ class rarn(nn.Module):
 		patch_22 = x[:, :, 14:28, 14:28]
 		patch_33 = x[:, :, 7:21, 7:21]
 		
-		branch_1_p1_out = self.layer3_1_p1(patch_11)
-		branch_1_p1_out = self.layer4_1_p1(branch_1_p1_out)
+		branch_1_p1_out = self.layer3_p1(patch_11)
+		branch_1_p1_out = self.layer4_p1(branch_1_p1_out)
 		branch_1_p1_out = self.avgpool(branch_1_p1_out)
 		branch_1_p1_out = torch.flatten(branch_1_p1_out, 1)
 		heads_1 = []
@@ -145,8 +145,8 @@ class rarn(nn.Module):
 			heads_1.append(getattr(self, "latent_class_1_%d" % i)(branch_1_p1_out))
 		head1 = torch.stack(heads_1)
 		
-		branch_1_p2_out = self.layer3_1_p2(patch_12)
-		branch_1_p2_out = self.layer4_1_p2(branch_1_p2_out)
+		branch_1_p2_out = self.layer3_p2(patch_12)
+		branch_1_p2_out = self.layer4_p2(branch_1_p2_out)
 		branch_1_p2_out = self.avgpool(branch_1_p2_out)
 		branch_1_p2_out = torch.flatten(branch_1_p2_out, 1)
 		heads_2 = []
@@ -154,8 +154,8 @@ class rarn(nn.Module):
 			heads_2.append(getattr(self, "latent_class_2_%d" % i)(branch_1_p2_out))
 		head2 = torch.stack(heads_2)
 		
-		branch_1_p3_out = self.layer3_1_p3(patch_21)
-		branch_1_p3_out = self.layer4_1_p3(branch_1_p3_out)
+		branch_1_p3_out = self.layer3_p3(patch_21)
+		branch_1_p3_out = self.layer4_p3(branch_1_p3_out)
 		branch_1_p3_out = self.avgpool(branch_1_p3_out)
 		branch_1_p3_out = torch.flatten(branch_1_p3_out, 1)
 		heads_3 = []
@@ -163,8 +163,8 @@ class rarn(nn.Module):
 			heads_3.append(getattr(self, "latent_class_3_%d" % i)(branch_1_p3_out))
 		head3 = torch.stack(heads_3)
 		
-		branch_1_p4_out = self.layer3_1_p4(patch_22)
-		branch_1_p4_out = self.layer4_1_p4(branch_1_p4_out)
+		branch_1_p4_out = self.layer3_p4(patch_22)
+		branch_1_p4_out = self.layer4_p4(branch_1_p4_out)
 		branch_1_p4_out = self.avgpool(branch_1_p4_out)
 		branch_1_p4_out = torch.flatten(branch_1_p4_out, 1)
 		heads_4 = []
@@ -172,8 +172,8 @@ class rarn(nn.Module):
 			heads_4.append(getattr(self, "latent_class_4_%d" % i)(branch_1_p4_out))
 		head4 = torch.stack(heads_4)
 		
-		branch_1_p5_out = self.layer3_1_p5(patch_33)
-		branch_1_p5_out = self.layer4_1_p5(branch_1_p5_out)
+		branch_1_p5_out = self.layer3_p5(patch_33)
+		branch_1_p5_out = self.layer4_p5(branch_1_p5_out)
 		branch_1_p5_out = self.avgpool(branch_1_p5_out)
 		branch_1_p5_out = torch.flatten(branch_1_p5_out, 1)
 		heads_5 = []
